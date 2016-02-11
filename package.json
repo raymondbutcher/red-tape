@@ -1,0 +1,35 @@
+{
+  "name": "red-tape",
+  "version": "0.0.1",
+  "description": "tape with errors",
+  "main": "extension.js",
+  "scripts": {
+    "test": "node tests/extension.test"
+  },
+  "homepage": "https://github.com/raymondbutcher/red-tape",
+  "keywords": [
+    "test",
+    "tests",
+    "tap"
+  ],
+  "author": "Raymond Butcher",
+  "license": "MIT",
+  "dependencies": {
+    "co": "^4.6.0",
+    "stack-trace": "0.0.9",
+    "tape": "^4.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raymondbutcher/red-tape.git"
+  },
+  "bugs": {
+    "url": "https://github.com/raymondbutcher/red-tape/issues"
+  }
+}
