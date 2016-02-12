@@ -86,7 +86,7 @@ test('showing assertions', function* showingAssertions(t) {
 
 test('showing error handling', function* showingErrorHandling(t) {
 
-    // Syntax errors are handled as failures and a traceback is shown.
+    // Regular errors are handled as failures and a traceback is shown.
     asd
 
 });
