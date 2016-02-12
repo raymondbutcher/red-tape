@@ -9,12 +9,18 @@ Test.prototype.run = co.wrap(function*() {
     if (this._skip) {
         this.end();
     } else {
+        this._promises = [];
         this.emit('prerun');
         try {
-            yield this._cb(this);
+            var res = this._cb(this);
+            if (res !== undefined) {
+                yield res;
+            }
         } catch (err) {
             this._fail_with_error(err.message, err);
         }
+        yield this._promises;
+        delete this._promises;
         this.end();
         this.emit('run');
     }
@@ -28,7 +34,9 @@ Test.prototype.test = function(name, cb) {
     function fail(err) {
         t._fail_with_error(name, err);
     }
-    return co(cb(t)).then(pass, fail);
+    var promise = co(cb(t)).then(pass, fail);
+    t._promises.push(promise);
+    return promise;
 }
 
 

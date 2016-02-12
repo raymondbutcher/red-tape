@@ -1,6 +1,6 @@
 {
   "name": "red-tape",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "tape with errors",
   "main": "extension.js",
   "scripts": {
@@ -20,7 +20,8 @@
     "tape": "^4.4.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "co-wait": "0.0.0"
   },
   "directories": {
     "test": "tests"

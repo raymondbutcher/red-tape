@@ -1,25 +1,26 @@
 'use strict';
 
 var test = require('..'),
-    expect = require('chai').expect;
+    expect = require('chai').expect,
+    wait = require('co-wait');
 
 test('showing sub-tests', function* showingSubTests(t) {
 
     // Create sub-tests to group assertions into a single pass or fail.
     // If the sub-test finishes without error, then it passes.
-    yield t.test('first sub-test', function* firstSubTest(t) {
+    t.test('first sub-test', function* firstSubTest(t) {
         expect(true).to.be.true;
         expect('thing').to.equal('thing');
     });
 
     // If an error is thrown, then it fails.
-    yield t.test('second sub-test', function* secondSubTest(t) {
+    t.test('second sub-test', function* secondSubTest(t) {
         expect(false).to.be.true;
     });
 
     // If tests are nested, then it ????
-    yield t.test('third sub-test', function* thirdSubTest(t) {
-        yield t.test('fourth sub-test', function* fourthSubTest(t) {
+    t.test('third sub-test', function* thirdSubTest(t) {
+        t.test('fourth sub-test', function* fourthSubTest(t) {
             t.pass('nesting');
         });
     });
@@ -64,8 +65,25 @@ test('showing error handling', function* showingErrorHandling(t) {
 test('showing success', function* showingSuccess(t) {
 
     t.pass('one')
-    t.pass('two')
-    t.pass('three')
-    t.pass('four')
+    t.test('two', function*(t) {
+        yield wait(500);
+        t.pass('nested three');
+    });
+    t.test('four', function(t) {
+        t.pass('nested five');
+    });
+
+});
+
+test('showing regular functions', function showingRegularFunctions(t) {
+
+    t.pass('one')
+    t.test('two', function*(t) {
+        // yield wait(500);
+        t.pass('nested three');
+    });
+    t.test('four', function(t) {
+        t.pass('nested five');
+    });
 
 });
