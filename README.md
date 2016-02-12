@@ -18,6 +18,7 @@ generators and assertion errors such as those thrown by
     * [colortape](https://github.com/shuhei/colortape)
     * [faucet](https://github.com/substack/faucet)
     * [tap-min](https://github.com/gummesson/tap-min)
+    * [tap-summary](https://github.com/zoubin/tap-summary)
 
 ## Installation
 
